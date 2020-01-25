@@ -27,7 +27,7 @@ allprojects {
     tasks.withType<Test>() {
         testLogging {
             exceptionFormat = TestExceptionFormat.FULL
-            events =  setOf(TestLogEvent.STARTED, TestLogEvent.SKIPPED, TestLogEvent.PASSED, TestLogEvent.FAILED)
+            events = setOf(TestLogEvent.STARTED, TestLogEvent.SKIPPED, TestLogEvent.PASSED, TestLogEvent.FAILED)
             showStandardStreams = true
         }
     }
@@ -37,6 +37,8 @@ tasks.register("instrumentedTest", type = Exec::class) {
     group = "Verification"
     description = "Starts a virtual device in the background, runs task 'connectedAndroidTest' and then stops the device."
 
+//    TODO see if you can accept config for Android SDK and device model(s)
+    // TODO see if you can turn this into a Gradle plugin (https://docs.gradle.org/current/userguide/custom_tasks.html)
 //    TODO avoid hardcoding the path for the Android SDK
     environment("ANDROID_SDK", "/home/michele/Android/Sdk")
 //    TODO see if you can put the shell scripts in before/after the custom gradle task
