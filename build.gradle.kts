@@ -33,7 +33,7 @@ allprojects {
     }
 }
 
-tasks.register("instrumentedTest", type = Exec::class) {
+tasks.register<Exec>("instrumentedTest") {
     group = "Verification"
     description = "Starts a virtual device in the background, runs task 'connectedAndroidTest' and then stops the device."
 
@@ -45,6 +45,6 @@ tasks.register("instrumentedTest", type = Exec::class) {
     commandLine = listOf("./androidtests")
 }
 
-tasks.register("clean", Delete::class) {
+tasks.register<Delete>("clean") {
     delete(rootProject.buildDir)
 }
